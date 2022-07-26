@@ -1,4 +1,23 @@
 .idea/
+patterns_1_abstract_factory_ejercicio/.settings/
+patterns_2_builder_ejercicio/.settings/
+patterns_3_factory_method_ejercicio/.settings/
+patterns_4_prototype_ejercicio/.settings/
+patterns_6_adapter_ejercicio/.settings/
+patterns_09_decorator_ejercicio/.settings/
+patterns_10_facade_ejercicio/.settings/
+patterns_11_flyweight_ejercicio/.settings/
+patterns_12_proxy_ejercicio/.settings/
+patterns_13_chain_of_responsability_ejercicio/.settings/
+patterns_14_command_ejercicio/.settings/
+patterns_18_mediator_ejercicio/.settings/
+patterns_23_template_ejercicio/.settings/
+solid_1_S_SRP_ejercicio/.settings/
+solid_2_O_OCP_ejercicio/.settings/
+solid_3_L_Liskov_ejercicio/.settings/
+solid_4_I_ISP_ejercicio/.settings/
+solid_5_D_DI_ejercicio/.settings/
+structural_bridge_pattern/.settings/
 
 # Compiled class file
 *.class
