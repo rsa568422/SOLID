@@ -31,9 +31,15 @@ public class Punto3D extends Punto2D {
 
 	@Override
 	public boolean equals(Object obj) {
-		if (getClass() != obj.getClass())
+		Punto3D other;
+		if (getClass() != obj.getClass() && !(obj instanceof Punto2D)) {
 			return false;
-		Punto3D other = (Punto3D) obj;
+		} else if (getClass() != obj.getClass()) {
+			Punto2D other2D = (Punto2D) obj;
+			other = new Punto3D(other2D.x, other2D.y, 0);
+		} else {
+			other = (Punto3D) obj;
+		}
 		return x == other.x && y == other.y && z == other.z;
 	}
 
