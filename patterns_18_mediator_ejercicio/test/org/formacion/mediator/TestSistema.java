@@ -10,16 +10,13 @@ public class TestSistema {
 	private Radio radio;
 	private Telefono telefono;
 	private Coche coche;
-	
+
 	@Before
 	public void init() {
-		radio = new Radio();
-		telefono = new Telefono();
-		coche = new Coche();
-		radio.setTelefono(telefono);
-		telefono.setRadio(radio);
-		coche.setRadio(radio);
-		coche.setTelefono(telefono);
+		this.radio = new Radio();
+		this.telefono = new Telefono();
+		this.coche = new Coche();
+		Mediator mediador = new Mediator(this.coche, this.radio, this.telefono);
 	}
 	
 	@Test
