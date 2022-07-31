@@ -2,15 +2,16 @@ package org.formacion.mediator;
 
 public class Telefono {
 
+	private Mediator mediador;
+
 	private boolean musicaOn = false;
-	private Radio radio;
-	
-	public void setRadio(Radio radio) {
-		this.radio = radio;
+
+	public void setMediador(Mediator mediador) {
+		this.mediador = mediador;
 	}
 
 	public void recibeLlamada() {
-		radio.apaga();
+		this.mediador.recibeLlamadaTelefono();
 	}
 
 	public void enciendeMusica() {
