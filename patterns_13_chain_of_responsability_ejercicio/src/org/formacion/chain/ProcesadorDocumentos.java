@@ -1,38 +1,36 @@
 package org.formacion.chain;
 
+import java.util.Arrays;
 import java.util.List;
+import java.util.StringJoiner;
+import java.util.stream.Collectors;
 
 public class ProcesadorDocumentos {
 
-	private LectorDocumentos lectorPdf;
-	private LectorDocumentos lectorOdt;
-	private LectorDocumentos lectorDoc;
+	private final List<LectorDocumentos> lectores;
+
+	public ProcesadorDocumentos() {
+		this.lectores = Arrays.asList(new LectorDoc(), new LectorOdt(), new LectorPdf());
+	}
 	
-    public ProcesadorDocumentos() {
-    	   this.lectorPdf = new LectorPdf();
-    	   this.lectorOdt = new LectorOdt();
-    	   this.lectorDoc = new LectorDoc();
+    public ProcesadorDocumentos(List<LectorDocumentos> lectores) {
+		this.lectores = lectores;
 	}
 
 	public String concatena (List<Documento> documentos)  {
-    	
-    	    String resultado = "";
-    	
-    	    for (Documento doc: documentos) {
-    	    	    if (doc.getTipo().equals("pdf")) {
-    	    	    	   resultado += lectorPdf.contenido(doc);
-    	    	    } else if (doc.getTipo().equals("odt")) {
-    	    	    		resultado += lectorOdt.contenido(doc);
-    	    	    } else if (doc.getTipo().equals("doc")) {
-    	    	    	resultado += lectorDoc.contenido(doc);
-    	    	    	} else {
-    	    	    	   resultado += "desconocido";
-    	    	    }
-    	    	    
-    	    	    resultado += "\n";
-    	    }
-    	    
-    	    return resultado;
+		StringBuilder contenidos = new StringBuilder();
+
+		documentos.forEach(documento -> {
+			String contenido = this.lectores
+					.stream()
+					.filter(lector -> lector.formatoCompatible(documento))
+					.map(lector -> lector.contenido(documento))
+					.findAny()
+					.orElse("desconocido");
+			contenidos.append(contenido.concat("\n"));
+		});
+
+		return contenidos.toString();
     }
 
 }

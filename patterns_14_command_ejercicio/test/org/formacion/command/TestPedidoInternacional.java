@@ -15,13 +15,13 @@ public class TestPedidoInternacional {
 		
 		// Descomentad el codigo y ejecutad el test
 		
-		/*
+
 		TratamientoPedido tratamientoKO = new TratamientoPedidoInternacional(new PedidoInternacional("Mordor", 100));
 		assertFalse(tratamientoKO.tratar());
 		
 		TratamientoPedido tratamientoOK = new TratamientoPedidoInternacional(new PedidoInternacional("Comarca", 100));
 		assertTrue(tratamientoOK.tratar());
-		*/
+
 		
 	}
 

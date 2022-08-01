@@ -37,7 +37,13 @@ public class TestFacade {
 	public void test_facade() {
 		// usa aqui tu servicio facade para dar de alta un usuario
 		// con los datos particulares nombreCliente e emailCliente
-		
+
+		Facade facade = new FacadeImpl();
+
+		facade.crearTarjeta(nombreCliente, ServicioFidelizacion.Tipo.BASICA);
+		facade.addEmail(nombreCliente, emailCliente);
+		facade.setPreferencias(nombreCliente, new PreferenciasComunicacion(false, true, true));
+
 		// deja esta invocacion para comprobar el comprortamiento de tu facade
 		compruebaInscripion();
 	}

@@ -1,17 +1,9 @@
 package org.formacion.template;
 
-public class InscripcionLucha {
-
-	private final Torneo torneo;
-	private final Polideportivo polideportivo;
+public class InscripcionLucha extends Inscripcion {
 
 	public InscripcionLucha(Polideportivo polideportivo) {
-		this.polideportivo = polideportivo;
-		this.torneo = new Torneo("torneo lucha");
-	}
-	
-	public Torneo getTorneo() {
-		return torneo;
+		super(new Torneo("torneo lucha"), polideportivo);
 	}
 
 	public boolean apunta (Solicitud solicitud) {
@@ -26,18 +18,18 @@ public class InscripcionLucha {
 			return false;
 		}
 		
-		if (torneo.getAceptadas().size() >= 6) {
+		if (this.getTorneo().getAceptadas().size() >= 6) {
 			// solo pueden participar 6 personas
 			return false;
 		}
 		
-		torneo.apunta(solicitud);
+		this.getTorneo().apunta(solicitud);
 	
 		
-		if (torneo.getAceptadas().size() == 6) {
+		if (this.getTorneo().getAceptadas().size() == 6) {
 			// plazas llenas -> reservamos polideportivo
 			// El tiempo estimado del torneo son 4 horas
-			polideportivo.reserva(torneo, 4);
+			this.getPolideportivo().reserva(this.getTorneo(), 4);
 		}
 
 		return true;

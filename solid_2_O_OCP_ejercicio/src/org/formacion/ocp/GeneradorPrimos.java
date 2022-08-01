@@ -3,10 +3,10 @@ package org.formacion.ocp;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GeneradorPrimos {
+public interface GeneradorPrimos {
 
 	
-	public List<Integer> primos (int limit) {
+	default List<Integer> primos (int limit) {
 		
 		List<Integer> primos = new ArrayList<>();
 		for (int i = 2; i < limit; i++) {
@@ -18,7 +18,7 @@ public class GeneradorPrimos {
 
 	}
 	
-	private boolean esPrimo (int candidato) {
+	default boolean esPrimo (int candidato) {
 		for (int i = 2; i < candidato; i++) {
 			if (candidato % i == 0) {
 				return false;
